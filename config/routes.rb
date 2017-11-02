@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :listings
   resources :profiles
   get 'home/index'
   root :to => 'home#index'
