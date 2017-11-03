@@ -28,6 +28,14 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
+
+      # Get photos directly from the params and save them to the database one by one
+      if params[:listing][:images]
+        params[:listing][:images].each { |image|
+          Photo.create(listing: @listing, image: image)
+        }
+      end
+
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -42,6 +50,14 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
+
+      # Get photos directly from the params and save them to the database one by one
+        if params[:listing][:images]
+          params[:listing][:images].each { |image|
+            Photo.create(listing: @listing, image: image)
+          }
+        end
+
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else

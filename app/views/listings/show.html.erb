@@ -12,12 +12,20 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= @listing.owner %>
+  <%= @listing.owner.email %>
 </p>
 
 <p>
   <strong>Return time:</strong>
   <%= @listing.return_time %>
+</p>
+
+<p>
+  <strong>Photos:</strong><br>
+  <% @listing.photos.each do |photo| %>
+    <%= image_tag photo.image_url(:thumb) %><br>
+    <%= link_to 'Delete Photo', photo_path(photo), method: :delete %><br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |

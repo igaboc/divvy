@@ -18,7 +18,7 @@
       <tr>
         <td><%= listing.title %></td>
         <td><%= listing.description %></td>
-        <td><%= listing.owner %></td>
+        <td><%= listing.owner.email %></td>
         <td><%= listing.return_time %></td>
         <td><%= link_to 'Show', listing %></td>
         <td><%= link_to 'Edit', edit_listing_path(listing) %></td>

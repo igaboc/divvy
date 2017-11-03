@@ -31,6 +31,11 @@
     <%= form.time_select :return_time, id: :listing_return_time %>
   </div>
 
+  <div class="field">
+    <%= form.label :images %>
+    <%= form.file_field :images, id: :images, multiple: true %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
