@@ -11,7 +11,7 @@
 
   <body>
     <nav class=navbar>
-      <strong class=logo> Divvy </strong>
+      <strong class=logo> <%= link_to 'Divvy', home_index_path %> </strong>
     </nav>
     <label for="openMenu" id="barMenu">
 			<span></span>
@@ -31,7 +31,9 @@
 			</ul>		
 		</nav>
 		<div class="content"></div>
-    <%= yield %>
+    <div class="pages">
+      <%= yield %>
+    </div>
     <div class="footer">
       <ul>
         <li class="footer-list"><a href="#">About Us</a></li>

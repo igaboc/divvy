@@ -23,6 +23,10 @@
     margin: 0;
  }
 
+ .pages {
+	 margin-bottom: 200px;
+ }
+
  .navbar {
      margin: 0;
      background-color: #1B2C35;
@@ -104,10 +108,9 @@ input#openMenu{
 }
 
 .footer {
-  position: static;
-  right: 0;
+  position: fixed;
+  width: 100%;
   bottom: 0;
-  left: 0;
   padding: 1rem;
   background-color: #1B2C35;
   text-align: center;
