@@ -8,4 +8,8 @@ class Listing < ApplicationRecord
   # accepts_nested_attributes_for :photos
 
   CATEGORY_TYPES = ["Boats and Jet Skis", "Books, Music and Games", "Cars and Vehicles", "Clothing", "Electronics and Computer", "Home and Garden", "Miscellaneous", "Sport and Fitness"]
+
+  STATE_TYPES = ["NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
+
+  COUNTRY_TYPES = ["Australia"]
 end

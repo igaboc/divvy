@@ -36,6 +36,19 @@
   </div>
 
   <div class="field">
+    <%= form.label :city %>
+    <%= form.text_area :city, id: :listing_city %>
+  </div>
+
+  <div class="field">
+    <%= form.select :state,  Listing::STATE_TYPES %>
+  </div> 
+
+  <div class="field">
+    <%= form.select :country,  Listing::COUNTRY_TYPES %>
+  </div> 
+
+  <div class="field">
     <%= form.label :deposit %>
     <%= form.text_field :deposit, id: :listing_deposit %>
   </div>
