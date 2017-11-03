@@ -22,6 +22,10 @@
   </div>
 
   <div class="field">
+    <%= form.select :category,  Listing::CATEGORY_TYPES %>
+  </div>  
+
+  <div class="field">
     <%= form.label :owner_id %>
     <%= form.text_field :owner_id, id: :listing_owner_id %>
   </div>
