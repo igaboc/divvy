@@ -36,6 +36,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :deposit %>
+    <%= form.text_field :deposit, id: :listing_deposit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rental_fee %>
+    <%= form.text_field :rental_fee, id: :listing_rental_fee %>
+  </div>
+
+  <div class="field">
     <%= form.label :images %>
     <%= form.file_field :images, id: :images, multiple: true %>
   </div>
