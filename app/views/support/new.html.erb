@@ -1,0 +1,31 @@
+<h1> Need Help? </h1>
+
+<%= form_with(url: support_url, local: true) do |f| %>
+    <% unless @error_messages.empty?  %>
+        <% @error_messages.each do |message|  %>
+            <p> <%= message %> </p>
+        <% end %>
+    <% end %>
+
+    <div>
+        <%= f.label 'Select a topic'%>
+        <%= f.select :help_category, ['Contact', 'My Ads', 'Report', 'Suggestion', 'Technical', 'Other']%>
+    </div>
+
+    <div>
+        <%= f.label 'Your Name' %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label 'Your email' %>
+        <%= f.email_field :email %>
+    </div>
+
+    <div>
+        <%= f.label 'Detailed Description' %>
+        <%= f.text_area :message, rows: 6 %>
+    </div>
+
+    <%= f.button 'Send' %>
+<% end %>

@@ -5,12 +5,16 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'fastimage'
 gem 'image_processing'
 gem 'mini_magick'
 gem 'shrine'
 
 gem 'geocoder'
+
+gem 'mailgun-ruby', '~>1.1.6'
 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
