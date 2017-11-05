@@ -20,6 +20,11 @@
   <%= @listing.city %>, <%= @listing.state %>
 </p>
 
+<% if current_user %>
+  <%= link_to "favorite", favorite_listing_path(@listing, type: "favorite"), method: :put %>
+  <%= link_to "unfavorite", favorite_listing_path(@listing, type: "unfavorite"), method: :put %>
+<% end %>
+
 <p>
   <strong>Owner:</strong>
   <%= @listing.owner.email %>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :photos
-  resources :listings
+  resources :listings do
+    put :favorite, on: :member
+  end
   resources :profiles
   get 'home/index'
   root :to => 'home#index'

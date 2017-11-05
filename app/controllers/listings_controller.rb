@@ -1,6 +1,25 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+  # Add and remove favorite listings
+  # for current_user
+  def favorite
+    type = params[listing_params]
+    if type == "favorite"
+      current_user.favorites << @listing
+      redirect_to @listing, notice: 'Added To Favorites'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@listing)
+      redirect_to @listing, notice: 'Removed From Favorites'
+
+    else
+      # Type missing, nothing happens
+      redirect_to @listing, notice: 'Nothing happened.'
+    end
+  end
+
+
   # GET /listings
   # GET /listings.json
   def index
