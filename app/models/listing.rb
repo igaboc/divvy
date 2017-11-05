@@ -11,6 +11,8 @@ class Listing < ApplicationRecord
   has_many :favorite_listings  # just the 'relationships'
   has_many :favorited_by, through: :favorite_listings, source: :user # the actual users favoriting a listing
 
+  has_many :reviews
+
   CATEGORY_TYPES = ["Boats and Jet Skis", "Books, Music and Games", "Cars and Vehicles", "Clothing", "Electronics and Computer", "Home and Garden", "Miscellaneous", "Sport and Fitness"]
 
   STATE_TYPES = ["NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]

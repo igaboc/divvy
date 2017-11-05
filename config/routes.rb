@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :photos
   resources :listings do
+    resources :reviews, except: [:show, :index]
     put :favorite, on: :member
   end
+
   resources :profiles
   get 'home/index'
   root :to => 'home#index'

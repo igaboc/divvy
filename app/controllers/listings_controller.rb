@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:favorite]
 
   # Add and remove favorite listings
   # for current_user
@@ -29,6 +30,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @reviews = Review.where(listing_id: @listing.id).order("created_at DESC")
   end
 
   # GET /listings/new

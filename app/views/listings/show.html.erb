@@ -53,5 +53,28 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+<div>
+  <%= link_to 'Edit', edit_listing_path(@listing) %> |
+  <%= link_to 'Back', listings_path %>
+</div>
+
+<div>
+  <strong> Customer Reviews </strong>
+</div>
+
+<div>
+  <%= link_to "Write a Review", new_listing_review_path(@listing) %>
+</div>
+
+<% if @reviews.blank? %>
+  <h3>No reviews just yet, would you like to add the first?</h3>
+  <%= link_to "Write Review", new_listing_review_path(@listing) %>
+<% else %>
+  <% @reviews.each do |review| %>
+  <div class="review">
+    <h3><%= Profile.find_by(user_id: review.user_id).user_name %></h3>
+    <p><%= review.rating %></p>
+    <p><%= review.comment %></p>
+  </div>
+  <% end %>
+<% end %>
