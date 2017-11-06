@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :reviews, except: [:show, :index]
     put :favorite, on: :member
   end
+  resources :rentals, only: [:index, :show, :new, :create]
 
   resources :profiles
   get 'home/index'
