@@ -1,11 +1,11 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :favorite]
   before_action :authenticate_user!, only: [:favorite]
 
   # Add and remove favorite listings
   # for current_user
   def favorite
-    type = params[listing_params]
+    type = params[:type]
     if type == "favorite"
       current_user.favorites << @listing
       redirect_to @listing, notice: 'Added To Favorites'
