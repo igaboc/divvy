@@ -1,4 +1,4 @@
-<h2>Rent Here <strong><%= @rental.listing.title %></strong></h2>
+<h2>Rent <strong><%= @rental.listing.title %></strong></h2>
 
 <%= form_with(mode: @rental) do |f| %>
     <%= f.hidden_field :listing_id %>
