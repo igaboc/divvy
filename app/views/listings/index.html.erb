@@ -1,28 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.title %></td>
-        <td><%= listing.description %></td>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Rent', new_rental_path(listing_id: listing.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Listing', new_listing_path %>
+
+<div class="container-fluid">
+  <div class="row" style="height: 60px">
+      <h3 class="span6" style="float: none; margin: 0 auto;">
+      <% if params[:query].nil? %>
+        <strong>Recently Added</strong>
+      <% else %>
+          <strong>Your Search Results</strong>         
+      <% end %>
+      </h3>
+  </div>
+  <section>
+    <div class="container py-3">
+      <% @listings.each do |listing| %>
+      <div class="card">
+        <div class="row ">
+          <div class="col-md-4">
+              <% if Photo.find_by(listing_id: listing.id) == nil %>
+                <div class="thumbnail text-center"><%= link_to image_tag("/images/noimage.png"), listing %></div>
+              <% else %>
+                <div class="thumbnail text-center"><%= link_to image_tag(listing.photos.first.image_url(:thumb)), listing%></div>
+              <% end %>
+            <div class="col-md-8 px-3">
+              <div class="card-block px-3">
+                <h4 class="card-title text-center"><%= link_to listing.title, listing %></h4>
+                <p class="card-text text-center"><%= number_to_currency listing.rental_fee %> per day </p>
+                <h6 class="card-text text-center"><%= listing.city %>, <%= listing.state %></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </section>
+</div>

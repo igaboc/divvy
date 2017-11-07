@@ -25,10 +25,11 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     if params[:query].nil?
-      @listings = Listing.all
+      @listings = Listing.all.order("created_at DESC")
     else
-      @listings = Listing.search_listing(params[:query])
+      @listings = Listing.search_listing(params[:query]).order("created_at DESC")
     end
+    @listing_five = Listing.find(5)
   end
 
   # GET /listings/1
