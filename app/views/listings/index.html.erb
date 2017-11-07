@@ -1,14 +1,27 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-4 col-lg-offset-4">
+      <div class="container-fluid">
+          <%= form_with url: listings_path, local: true, method: :get, id: "search-form" do |f| %>
+              <%= f.text_field :query, placeholder: "I'm looking for..." %>
+              <%= f.submit 'Search', class: "btn btn-warning" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'New Listing', new_listing_path %>
-
+  <div class='container-fluid'>
+    <button class="btn btn-default btn-block"><%= link_to 'Post ad', new_listing_path %></button>
+  </div>
 <div class="container-fluid">
   <div class="row" style="height: 60px">
       <h3 class="span6" style="float: none; margin: 0 auto;">
       <% if params[:query].nil? %>
         <strong>Recently Added</strong>
       <% else %>
-          <strong>Your Search Results</strong>         
+          <strong>Your Search Results for ... <div class='text-center'><%= params[:query] %></div></strong>         
       <% end %>
       </h3>
   </div>
