@@ -1,2 +1,78 @@
-<h1><%= current_user.email %></h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid container-background cactus row">
+        <div class="container">
+            <h1 class="display-3">Rentals at neighborly prices.</h1>
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="I'm looking for...">
+                    <div class="input-group-btn">
+                        <button class="btn btn-warning" type="submit">></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="container-fluid">
+        <div class="row" style="height: 60px">
+            <h3 class="span6" style="float: none; margin: 0 auto;"><strong>Featured Items</strong></h3>
+        </div>
+        <div class="card-deck">
+            <div class="card">
+            <%= link_to image_tag(Photo.find(7).image_url(:thumb), class:"card-img-top"), listing_path(@listing_five)%>
+                <div class="card-block">
+                <h4 class="card-title text-center"><%= link_to @listing_five.title, listing_path(@listing_five) %></h4>
+                </div>
+            </div>
+            <div class="card">
+            <%= link_to image_tag(Photo.find(9).image_url(:thumb), class:"card-img-top"), listing_path(@listing_nine)%>
+                <div class="card-block">
+                <h4 class="card-title text-center"><%= link_to @listing_nine.title, listing_path(@listing_nine) %></h4>
+                </div>
+            </div>
+            <div class="card">
+            <%= link_to image_tag(Photo.find(8).image_url(:thumb), class:"card-img-top"), listing_path(@listing_nine)%>
+                <div class="card-block">
+                <h4 class="card-title text-center"><%= link_to @listing_eight.title, listing_path(@listing_eight) %></h4>
+                </div>
+            </div>
+        </div>
+    <div class=button>
+        <button type="button" class="btn btn-warning btn-md btn-block"><%= link_to 'See all', listings_path %></button>
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="container-fluid">
+        <div class="row" style="height: 60px">
+            <h3 class="span6" style="float: none; margin: 0 auto;"><strong>Featured Categories</strong></h3>
+        </div>
+        <div class="card-deck">
+            <div class="card">
+                <img class="card-img-top" src="/images/books.jpg" alt="Card image cap">
+                <div class="card-block text-center">
+                <h4 class="card-title">Books, Music and Games</h4>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="/images/computer.jpg" alt="Card image cap">
+                <div class="card-block text-center">
+                <h4 class="card-title">Electronics and Computer</h4>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="/images/gym.jpg" alt="Card image cap">
+                <div class="card-block text-center">
+                <h4 class="card-title">Sport and Fitness</h4>
+                </div>
+            </div>
+        </div>
+    <div class=button>
+        <button type="button" class="btn btn-info btn-md btn-block"><%= link_to 'Browse Listings', listings_path %></button>
+    </div>
+    </div>
+</div>

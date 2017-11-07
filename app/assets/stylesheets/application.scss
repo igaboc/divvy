@@ -1,18 +1,5 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
 
  strong {
     font-family: 'Roboto', sans-serif;
@@ -24,7 +11,10 @@
  }
 
  .pages {
-	 margin-bottom: 200px;
+	margin-bottom: 200px;
+    font-family: 'Roboto', sans-serif;
+    font-style: Bold;
+    font-size: 20px
  }
 
  .navbar {
@@ -33,12 +23,11 @@
      height: 61px;
  }
 
- .logo {
+ a.logo {
     font-family: 'Rancho', cursive;
     font-size: 30px;
-    color: #F2F2F2;
+    color: #F2F2F2 !important;
     line-height: 61px;
-    padding-left: 30px;
  }
 
 body,.menu{
@@ -76,7 +65,7 @@ input#openMenu{
 }
 .menu li{
 	float:left;	
-	width:21%;
+	width:15%;
 	text-align:center;
 	padding:2%;
 
@@ -116,9 +105,40 @@ input#openMenu{
   text-align: center;
 }
 
-.footer-list {
+a.footer-list {
     color: white;
     text-decoration: none;
     list-style-type: none;
-    
+}
+
+.footer-list {
+	list-style-type: none;
+}
+
+.container-background {
+    background-size: 100%;
+    width: auto;
+	min-height: 275px;
+}
+.cactus {
+	background-image: url(cactus.jpg);
+}
+
+.display-3 {
+	color: #C15F25;
+	height: 30%;
+	font-size: 120%;
+	font-style: bold;
+	padding-top: 15%;
+	padding-bottom: 15%;
+}
+
+.container {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.button {
+	padding-top: 20px;
+	padding-bottom: 20px;	
 }
