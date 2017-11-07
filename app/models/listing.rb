@@ -18,4 +18,13 @@ class Listing < ApplicationRecord
   STATE_TYPES = ["NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
 
   COUNTRY_TYPES = ["Australia"]
+
+  def self.search_listing(word)
+    where("LOWER(title) LIKE ?", "%#{word.downcase}%")
+  end
+
+  def self.category_filter(category_type)
+    where(category: category_type)
+  end
+
 end

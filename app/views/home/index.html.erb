@@ -2,18 +2,15 @@
     <div class="jumbotron jumbotron-fluid container-background cactus row">
         <div class="container">
             <h1 class="display-3">Rentals at neighborly prices.</h1>
-            <form class="navbar-form" role="search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="I'm looking for...">
-                    <div class="input-group-btn">
-                        <button class="btn btn-warning" type="submit">></button>
-                    </div>
+                    <%= form_with url: listings_path, local: true, method: :get, id: "search-form" do |f| %>
+                        <%= f.text_field :query, placeholder: "I'm looking for..." %>
+                        <%= f.submit 'Search', class: "btn btn-warning" %>
+                    <% end %>
                 </div>
-            </form>
         </div>
     </div>
 </div>
-
 
 <div class="container">
     <div class="container-fluid">
