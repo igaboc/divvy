@@ -7,6 +7,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    @review.user_id = current_user.id
+    @review.listing_id = @listing
   end
 
   # GET /reviews/1/edit
@@ -18,7 +20,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.listing_id = @listing.id
+    @review.listing_id = @listing
 
     respond_to do |format|
       if @review.save

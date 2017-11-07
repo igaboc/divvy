@@ -1,80 +1,82 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @listing.category %>
-</p>
-
-<p>
-  <strong>Item Location:</strong>
-  <%= @listing.city %>, <%= @listing.state %>
-</p>
-
-<% if current_user %>
-  <%= link_to "favorite", favorite_listing_path(@listing, type: "favorite"), method: :put %>
-  <%= link_to "unfavorite", favorite_listing_path(@listing, type: "unfavorite"), method: :put %>
-<% end %>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @listing.owner.email %>
-</p>
-
-<p>
-  <strong>Rental Fee:</strong>
-  <%= @listing.rental_fee %>
-</p>
-
-<p>
-  <strong>Deposit:</strong>
-  <%= @listing.deposit %>
-</p>
-
-<p>
-  <strong>Return time:</strong>
-  <%= @listing.return_time %>
-</p>
-
-<p>
-  <strong>Photos:</strong><br>
-  <% @listing.photos.each do |photo| %>
-    <%= image_tag photo.image_url(:thumb) %><br>
-    <%= link_to 'Delete Photo', photo_path(photo), method: :delete %><br>
-  <% end %>
-</p>
-
 <div>
-  <%= link_to 'Edit', edit_listing_path(@listing) %> |
-  <%= link_to 'Back', listings_path %>
+  <small> . <%= link_to 'Back to listings', listings_path %></small> <br>
+  <%# if @listing.owner_id == current_user.id %>
+    <%#= '' %>
+  <%# else %>
+    <%#= link_to 'Edit your listing', edit_listing_path(@listing) %>
+  <%# end %>
 </div>
 
-<div>
-  <strong> Customer Reviews </strong>
-</div>
-
-<div>
-  <%= link_to "Write a Review", new_listing_review_path(@listing) %>
-</div>
-
-<% if @reviews.blank? %>
-  <h3>No reviews just yet, would you like to add the first?</h3>
-  <%= link_to "Write Review", new_listing_review_path(@listing) %>
+<% if Photo.find_by(listing_id: @listing.id) == nil %>
+  <div class="thumbnail text-center"><%= image_tag("/images/noimage.png")%></div>
 <% else %>
-  <% @reviews.each do |review| %>
-  <div class="review">
-    <h3><%= Profile.find_by(user_id: review.user_id).user_name %></h3>
-    <p><%= review.rating %></p>
-    <p><%= review.comment %></p>
+  <div class="thumbnail text-center">
+    <% @listing.photos.each do |photo| %>
+      <%= image_tag photo.image_url(:thumb) %><br>
+    <% end %>
   </div>
-  <% end %>
 <% end %>
+
+<div class="container">
+  <h1>
+    <%= @listing.title %>
+  </h1>
+
+  <h3>
+    <%= number_to_currency @listing.rental_fee %> per day
+  </h3>
+
+  <h5>
+    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+    <%= @listing.city %>, <%= @listing.state %>
+  </h5>
+
+  <p>
+    <%= link_to Profile.find_by(user_id: @listing.owner_id).user_name, profile_path(Profile.find_by(user_id: @listing.owner_id)) %>
+  </p>
+
+  <p>
+    <strong>Item Description:</strong> <br>
+    <%= @listing.description %>
+  </p>
+
+  <div class=button>
+    <button type="button" class="btn btn-warning btn-md btn-block"><%= link_to 'Book Now', '#' %></button>
+  </div>
+</div>
+
+<%# if current_user %>
+  <%#= link_to "favorite", favorite_listing_path(@listing, type: "favorite"), method: :put %>
+  <%#= link_to "unfavorite", favorite_listing_path(@listing, type: "unfavorite"), method: :put %>
+<%# end %>
+
+
+
+<div class="container">
+  <div>
+    <h3> Customer Reviews </h3>
+  </div>
+
+  <div>
+    <p><%= link_to "Leave a Review", new_listing_review_path(@listing) %></p>
+  </div>
+
+  <% if @reviews.blank? %>
+    <small class="text-muted">No reviews just yet, would you like to add the first?</small>
+  <% else %>
+    <% @reviews.each do |review| %>
+    <div class="card">
+      <div class="card-block">
+        <div class="container"
+          <p><%= review.rating %></p>
+          <h4 class="card-title"><%= truncate(review.comment, :length => 20, :separator => ' ') %></h4>
+          <h6 class="card-subtitle mb-2 text-muted"><%= link_to Profile.find_by(user_id: review.user_id).user_name, profile_path(review.user_id) %></h6>
+          <p class="card-text"><%= review.comment %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
