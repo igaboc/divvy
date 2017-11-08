@@ -2,19 +2,27 @@
     <div class=logo> <%= link_to 'Divvy', home_index_path, :class => "logo" %> </div>
 </nav>
 <label for="openMenu" id="barMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-    <input type="checkbox" id="openMenu" checked>
-    <nav class="mainMenu">
-        <ul class="menu">
-            <li><a href="#">Favourites</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="/support">Support</a></li>
-            <li><a href="#">Register</a></li>
-            <li><a href="#">Login</a></li>
-            <div class="clear"></div>
-        </ul>		
-    </nav>
+    <span></span>
+    <span></span>
+    <span></span>
+</label>
+<input type="checkbox" id="openMenu" checked>
+<nav class="mainMenu">
+    <ul class="menu">
+        <% if user_signed_in? %>
+            <h5 class="text-muted text-center">Welcome <%= Profile.find_by(user_id: current_user.id).user_name %></h5>
+        <% end %>
+        <li><a href="#">Favourites</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="/listings/1/rentals">Rentals</a></li>
+        <li><a href="/support">Support</a></li>
+        <li><a href="#">Register</a></li>
+        <% if user_signed_in? %>
+        <li><a href="#"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></a></li>
+        <% else %>
+        <li><a href="#"><%= link_to 'Sign In', new_user_session_path %></a></li>   
+        <% end %>
+        <div class="clear"></div>
+    </ul>		
+</nav>

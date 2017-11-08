@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106005238) do
+ActiveRecord::Schema.define(version: 20171108012038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,11 @@ ActiveRecord::Schema.define(version: 20171106005238) do
     t.string "charge_identifier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "applied_rate"
+    t.decimal "deposit_paid"
+    t.time "returned_at"
     t.index ["listing_id"], name: "index_rentals_on_listing_id"
     t.index ["renter_id"], name: "index_rentals_on_renter_id"
   end

@@ -1,7 +1,22 @@
 <h2>Rent <strong><%= @rental.listing.title %></strong></h2>
 
-<%= form_with(mode: @rental) do |f| %>
-    <%= f.hidden_field :listing_id %>
+<%= form_with(model: [@rental.listing, @rental])  do |f| %>
+  <%= f.hidden_field :listing_id %>
+
+<div>
+  <%= f.label :start_date %>
+  <%= f.text_field :start_date, type: 'date' %>
+</div>
+
+<div>
+  <%= f.label :end_date %>
+  <%= f.text_field :end_date, type: 'date' %>
+</div>
+
+<div>
+  <%= f.label "Required Deposit: " %>
+  <%= number_to_currency(@rental.listing.deposit) %>
+</div>
 
   <article>
     <% if flash[:error].present? %>
@@ -10,7 +25,7 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $5.00</span>
+      <span>Price per day: <%= number_to_currency @rental.listing.rental_fee %></span>
     </label>
   </article>
 
@@ -19,6 +34,6 @@
           data-description="<%= @rental.listing.title %>"
           data-email="<%= current_user.email %>"
           data-currency="aud"
-          data-amount="500"
+          data-amount="<%= @amount %>"
           data-locale="auto"></script>
 <% end %>

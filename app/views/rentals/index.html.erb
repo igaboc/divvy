@@ -1,2 +1,27 @@
-<h1>Rentals#index</h1>
-<p>Find me in app/views/rentals/index.html.erb</p>
+<h1 class="text-center">My Rentals</h1>
+
+<table class="table table-striped sortable">
+  <thead>
+    <tr>
+      <th>Listing</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Return Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @rentals.nil? %>
+        <p> No Rentals</p>
+    <% else %>
+        <% @rentals.each do |rental| %>
+        <tr>
+            <td><%= link_to rental.listing.title, listing_path(rental.listing) %></td>
+            <td><%= rental.start_date %></td>        
+            <td><%= rental.end_date %></td>
+            <td><%= rental.end_date %> <%= rental.listing.return_time.in_time_zone('Australia/Melbourne').strftime("%I:%M%p") %></td>
+        </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+
