@@ -21,19 +21,19 @@
             <div class="card">
             <%= link_to image_tag(Photo.find(7).image_url(:thumb), class:"card-img-top"), listing_path(@listing_five)%>
                 <div class="card-block">
-                <h4 class="card-title text-center"><%= link_to @listing_five.title, listing_path(@listing_five) %></h4>
+                <h4 class="card-title text-center"><%= link_to @listing_five.title, listing_path(@listing_five), :style=>'color: #4F6551' %></h4>
                 </div>
             </div>
             <div class="card">
             <%= link_to image_tag(Photo.find(9).image_url(:thumb), class:"card-img-top"), listing_path(@listing_nine)%>
                 <div class="card-block">
-                <h4 class="card-title text-center"><%= link_to @listing_nine.title, listing_path(@listing_nine) %></h4>
+                <h4 class="card-title text-center"><%= link_to @listing_nine.title, listing_path(@listing_nine), :style=>'color: #4F6551' %></h4>
                 </div>
             </div>
             <div class="card">
             <%= link_to image_tag(Photo.find(8).image_url(:thumb), class:"card-img-top"), listing_path(@listing_nine)%>
                 <div class="card-block">
-                <h4 class="card-title text-center"><%= link_to @listing_eight.title, listing_path(@listing_eight) %></h4>
+                <h4 class="card-title text-center"><%= link_to @listing_eight.title, listing_path(@listing_eight), :style=>'color: #4F6551' %></h4>
                 </div>
             </div>
         </div>

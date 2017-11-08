@@ -10,7 +10,7 @@
 <nav class="mainMenu">
     <ul class="menu">
         <% if user_signed_in? %>
-            <h5 class="text-muted text-center">Welcome <%= Profile.find_by(user_id: current_user.id).user_name %></h5>
+            <h5 class="text-muted text-center">Welcome <strong><%= Profile.find_by(user_id: current_user.id).user_name %></strong></h5>
         <% end %>
         <li><a href="#">Favourites</a></li>
         <li><a href="/conversations">Messages</a></li>
