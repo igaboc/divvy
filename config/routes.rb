@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :listings do
     resources :reviews, except: [:show, :index]
     put :favorite, on: :member
-    resources :rentals, only: [:index, :show, :new, :create]
+    resources :rentals, only: [:index, :show, :new, :create, :update, :edit]
   end
 
   resources :profiles

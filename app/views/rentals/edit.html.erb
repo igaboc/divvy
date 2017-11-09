@@ -1,0 +1,28 @@
+<h1 class="text-center">Checkout </h1>
+
+<p><%= number_to_currency @rental.applied_rate %> per day x <%= @rental.calc_days(@rental.start_date, @rental.end_date) %> nights = <%= number_to_currency @rental.sub_total %></p>
+<p>Deposit = <%= number_to_currency @rental.deposit_paid %></p>
+
+<p><strong>Total = <%= number_to_currency @rental.total_price %></strong></p>
+
+<%= form_with(model: [@rental.listing, @rental], method: :patch, local: true)  do |f| %>
+  <%= f.hidden_field :listing_id %>
+
+
+ <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+  </article>
+
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="<%= @rental.listing.title %>"
+          data-email="<%= current_user.email %>"
+          data-currency="aud"
+          data-amount="<%= @amount %>"
+          data-locale="auto"></script>
+<% end %>

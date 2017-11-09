@@ -7,4 +7,23 @@ class Rental < ApplicationRecord
     difference.to_i
   end
 
+  def sub_total
+    duration = self.calc_days(self.start_date, self.end_date)
+  
+    total = duration * self.applied_rate
+  end
+
+  def total_price
+    duration = self.calc_days(self.start_date, self.end_date)
+
+    total = self.deposit_paid + (duration * self.applied_rate)
+  end
+
+  def total_price_cents
+    duration = self.calc_days(self.start_date, self.end_date)
+
+    total = self.deposit_paid + (duration * self.applied_rate)
+    (total*100).to_i
+  end
+
 end
