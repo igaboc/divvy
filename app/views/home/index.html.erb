@@ -19,7 +19,7 @@
         </div>
         <div class="card-deck">
             <div class="card">
-            <% if listing_id: @listing_five.id == nil %>
+            <% if Photo.find_by(listing_id: @listing_five.id).image_url(:thumb) == nil %>
                 <%= image_tag("/images/noimage.png") %>
             <% else %>
                 <%= link_to image_tag(Photo.find_by(listing_id: @listing_five.id).image_url(:thumb), class:"card-img-top"), listing_path(@listing_five)%>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="card">
-            <% if listing_id: @listing_five.id == nil %>
+            <% if Photo.find_by(listing_id: @listing_nine.id).image_url(:thumb) == nil %>
                 <%= image_tag("/images/noimage.png") %>
             <% else %>
                 <%= link_to image_tag(Photo.find_by(listing_id: @listing_nine.id).image_url(:thumb), class:"card-img-top"), listing_path(@listing_nine)%>
@@ -39,10 +39,10 @@
                 </div>
             </div>
             <div class="card">
-            <% if listing_id: @listing_five.id == nil %>
+            <% if Photo.find_by(listing_id: @listing_eight.id).image_url(:thumb) == nil %>
                 <%= image_tag("/images/noimage.png") %>
             <% else %>
-                <%= link_to image_tag(Photo.find(listing_id: @listing_eight.id).image_url(:thumb), class:"card-img-top"), listing_path(@listing_nine)%>
+                <%= link_to image_tag(Photo.find_by(listing_id: @listing_eight.id).image_url(:thumb), class:"card-img-top"), listing_path(@listing_nine)%>
             <% end %>
                 <div class="card-block">
                 <h4 class="card-title text-center"><%= link_to @listing_eight.title, listing_path(@listing_eight), :style=>'color: #4F6551' %></h4>
