@@ -24,6 +24,8 @@ gem 'rails_admin', '~> 1.2'
 
 gem 'aws-sdk', '~> 3'
 
+gem 'rails-erd', require: false, group: :development
+
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
