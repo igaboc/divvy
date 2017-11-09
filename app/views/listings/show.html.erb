@@ -37,6 +37,12 @@
     <%= link_to Profile.find_by(user_id: @listing.owner_id).user_name, profile_path(Profile.find_by(user_id: @listing.owner_id)) %>
   </p>
 
+  <% if current_user.id == @listing.owner_id %>
+    
+  <% else %>
+    <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: User.find(@listing.owner_id)), method: 'post'%>
+  <% end %>
+
   <p>
     <strong>Item Description:</strong> <br>
     <%= @listing.description %>
