@@ -1,4 +1,4 @@
-# Divvy
+# [Divvy](https://damp-gorge-12696.herokuapp.com/)
 ## Rent out your stuff that's not always in use
 
 Divvy is an online market place that enables people to rent out the stuff they don't always use. This online platform enables owners to gain additional cash for items they don't always use at home. Think of all the camping gear, clothing, snow gear you use once in a while. Put your stuff at work and gain some additional cash, whilst helping the environment by reducing the need for people buying items to fulfill a temporary need.
