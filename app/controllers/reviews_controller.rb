@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @review.user_id = current_user.id
-    @review.listing_id = @listing
+    @review.listing = @listing
   end
 
   # GET /reviews/1/edit

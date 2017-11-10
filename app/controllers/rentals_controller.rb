@@ -71,7 +71,7 @@ class RentalsController < ApplicationController
 
     respond_to do |format|
       if @rental.save
-        format.html { redirect_to edit_listing_rental_path(@rental, @rental.listing), notice: 'Rental was successfully created.' }
+        format.html { redirect_to edit_listing_rental_path(@rental.listing, @rental), notice: 'Rental was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new }
